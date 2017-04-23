@@ -1,32 +1,47 @@
 console.log("JS File loaded")
 
-function imgRedirect(destination){
- location.href = destination;
-}
+var item1select = false
+var item2select = false
 
 var comboName = ""
 var comboCost = 0
 var comboStats = []
 var comboDesc = ""
 
-function getIndexByKey(arraytosearch, key, valuetosearch) {
- for (var i = 0; i < arraytosearch.length; i++) {
-   if (arraytosearch[i][key] == valuetosearch) {
-     return i;
-      }
-    }
-    return null;
-}
+var image1number = 0;
+var item1name = ""
+var item1cost = 0
+var item1stats = []
+var item1desc = ""
 
-function pullStats(imagenumber){
+var image2number = 0;
+var item2name = ""
+var item2cost = 0
+var item2stats = []
+var item2desc = ""
+
+var stats = [
+  "Health", "Mana", "Attack Damage", "Ability Power",
+  "% Base Health Regen","% Base Mana Regen", "Movespeed", "Attack Speed",
+  "% Lifesteal", "% Omnivamp","Armor", "Magic Resistance",
+  "Lethality", "% Armor Pen", "Magic Pen","% Magic Pen",
+  "Gold/5", "Cooldown Reduction", "% Crit Chance" ]
+
+
+function imgRedirect(destination){
+   location.href = destination;
+  }
+
+function pullStats(imagenumber, imageindex){
   var item = {}
   item = [
   {
   	"id": 0,
-  	"name": "EMPTY",
-    "cost":  null,
-    "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  	"desc": "EMPTY",
+  	"name": "Make Selection",
+    "cost": null,
+    "stats": null,
+  	"desc": "noobs",
+    "index": 0,
   },
 
   {
@@ -35,6 +50,7 @@ function pullStats(imagenumber){
     "cost": 300,
     "stats": [0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Speed increase!",
+    "index": 1,
   },
 
   {
@@ -43,6 +59,7 @@ function pullStats(imagenumber){
     "cost": 125,
     "stats": [0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Mana ++",
+    "index": 2,
   },
 
   {
@@ -51,6 +68,7 @@ function pullStats(imagenumber){
     "cost": 425,
     "stats": [0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Combined output",
+    "index": 3,
   },
 
   {
@@ -59,6 +77,7 @@ function pullStats(imagenumber){
     "cost": 1000,
     "stats": [380,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Big health thing",
+    "index": 4,
   },
 
   {
@@ -67,6 +86,7 @@ function pullStats(imagenumber){
     "cost": 800,
     "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20],
   	"desc": "Invis cloak",
+    "index": 5,
   },
 
   {
@@ -75,6 +95,7 @@ function pullStats(imagenumber){
     "cost": 850,
     "stats": [0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Magic wand",
+    "index": 6,
   },
 
   {
@@ -83,6 +104,7 @@ function pullStats(imagenumber){
     "cost": 350,
     "stats": [0,250,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Mana thing",
+    "index": 7,
   },
 
   {
@@ -91,6 +113,7 @@ function pullStats(imagenumber){
     "cost": 400,
     "stats": [150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Health thing",
+    "index": 8,
   },
 
   {
@@ -99,6 +122,7 @@ function pullStats(imagenumber){
     "cost": 300,
     "stats": [0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0],
   	"desc": "Armor thing",
+    "index": 9,
   },
 
   {
@@ -107,6 +131,7 @@ function pullStats(imagenumber){
     "cost": 800,
     "stats": [0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0],
   	"desc": "Armor big thing",
+    "index": 10,
   },
 
   {
@@ -115,6 +140,7 @@ function pullStats(imagenumber){
     "cost": 450,
     "stats": [0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0],
   	"desc": "Description of mantle",
+    "index": 11,
   },
 
   {
@@ -123,6 +149,7 @@ function pullStats(imagenumber){
     "cost": 350,
     "stats": [0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Long sword",
+    "index": 12,
   },
 
   {
@@ -131,6 +158,7 @@ function pullStats(imagenumber){
     "cost": 875,
     "stats": [0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Dig thing",
+    "index": 13,
   },
 
   {
@@ -139,6 +167,7 @@ function pullStats(imagenumber){
     "cost": 1300,
     "stats": [0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Big friend sward",
+    "index": 14,
   },
 
   {
@@ -147,6 +176,7 @@ function pullStats(imagenumber){
     "cost": 350,
     "stats": [0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "UNIQUE Passive - Tooth: Damaging a monster with a spell or attack steals 25 Health over 5 seconds.  Killing monsters grants special bonus experience.",
+    "index": 15,
   },
 
   {
@@ -155,6 +185,7 @@ function pullStats(imagenumber){
     "cost": 350,
     "stats": [0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0],
   	"desc": "UNIQUE Passive - Nail: Basic attacks deal 25 bonus damage on hit vs. Monsters.  Killing monsters grants special bonus experience.",
+    "index": 16,
   },
 
   {
@@ -163,6 +194,7 @@ function pullStats(imagenumber){
     "cost": 300,
     "stats": [0,0,0,0,0,0,0,12,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Stab thing",
+    "index": 17,
   },
 
   {
@@ -171,6 +203,7 @@ function pullStats(imagenumber){
     "cost": 1000,
     "stats": [0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "UNIQUE Passive: Basic attacks deal an additional 15 physical damage on hit.",
+    "index": 18,
   },
 
   {
@@ -179,6 +212,7 @@ function pullStats(imagenumber){
     "cost": 400,
     "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10],
   	"desc": "Gloves",
+    "index": 19,
   },
 
   {
@@ -187,6 +221,7 @@ function pullStats(imagenumber){
     "cost": 435,
     "stats": [0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Its a book",
+    "index": 20,
   },
 
   {
@@ -195,6 +230,7 @@ function pullStats(imagenumber){
     "cost": 900,
     "stats": [0,0,15,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Grr steal",
+    "index": 21,
   },
 
   {
@@ -203,41 +239,49 @@ function pullStats(imagenumber){
     "cost": 450,
     "stats": [80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Passive: Restores 6 Health every 5 seconds.\nUNIQUE Passive: Blocks 8 damage from single target attacks and spells from champions.",
+    "index": 22,
   },
+
 /**
-NEED TO PUT ALL REST OF ITEMS HERE
+PUT ALL REST OF ITEMS HERE
 **/
-  {
-    "id": 1,
-    "name": "Item 1",
-    "cost":  null,
-    "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    "desc": "Choose an item to go here.",
-  },
 
-  {
-    "id": 2,
-    "name": "Item 2",
-    "cost":  null,
-    "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    "desc": "Choose a second item to go here.",
-  },
+]
 
+// set placeholder objects to toss selected things into
+var trayitems = {}
+trayitems = [
   {
-    "id": 3,
+    "id": 0,
     "name": comboName,
     "cost": comboCost,
     "stats": comboStats,
     "desc": comboDesc,
+    "index": 0,
   },
-  ]
+  {
+    "id": image1number,
+    "name": item1name,
+    "cost": item1cost,
+    "stats": item1stats,
+    "desc": item1desc,
+    "index": 1,
+  },
 
+  {
+    "id": image2number,
+    "name": item2name,
+    "cost": item2cost,
+    "stats": item2stats,
+    "desc": item2desc,
+    "index": 2,
+  },
+]
 
  // console.log("End of pullState function - file name id number of item " + imagenumber)
- imagefilename = "./item/" + imagenumber + ".png"
+ image1filename = "./item/" + imagenumber + ".png"
+ image2filename = "./item/" + imagenumber + ".png"
  // console.log(imagefilename)
-
- // item.indexOf[item
 
  //
  // var item1Image = document.getElementById("item1-image");
@@ -250,45 +294,52 @@ NEED TO PUT ALL REST OF ITEMS HERE
  //   document.getElementById("item2-image").src=imagefilename;
  // }
 
- console.log(item[1])
-
- var item1index = functiontofindIndexByKeyValue(item, "id", "1001");
- var item2index = functiontofindIndexByKeyValue(item, "id", "1004");
- var comboindex = functiontofindIndexByKeyValue(item, "id", "3");
-
- image1nametext = item[item1index].name
- image1costtext = item[item1index].cost
- image1statstext = item[item1index].stats.length
- image1desctext = item[item1index].desc
+ console.log(item[imageindex])
 
 
- document.getElementById("item1-image").src= imagefilename;
+
+
+
+if((item1select==false) && (item2select==false)){
+ //assign and display item 1
+ image1nametext = item[imageindex].name
+ image1costtext = item[imageindex].cost
+ image1desctext = item[imageindex].desc
+ document.getElementById("item1-image").src= image1filename;
  document.getElementById("name1").innerHTML = image1nametext;
  document.getElementById("cost1").innerHTML = image1costtext;
- document.getElementById("stats1").innerHTML = image1statstext;
+for(i=0;i<stats.length;i++){
+  image1statstext = ""
+  if(item[1].stats[i] > 0){
+    image1statstext = image1statstext.concat("+ " + item[1].stats[i] + "" + stats[i] + "\n")
+  }
+  document.getElementById("stats1").innerHTML = image1statstext;
+}
  document.getElementById("desc1").innerHTML = image1desctext;
+}
 
- image2nametext = item[2].name
- image2costtext = item[2].cost
- image2statstext = item[2].stats.length
- image2desctext = item[2].desc
-
- document.getElementById("item2-image").src= imagefilename;
- document.getElementById("name2").innerHTML = image2nametext;
- document.getElementById("cost2").innerHTML = image2costtext;
- document.getElementById("stats2").innerHTML = image2statstext;
- document.getElementById("desc2").innerHTML = image2desctext;
-
- imagecombonametext = item[3].name
- imagecombocosttext = item[3].cost
- imagecombostatstext = item[3].stats.length
- imagecombodesctext = item[3].desc
-
- document.getElementById("combo-image").src= imagefilename;
- document.getElementById("namecombo").innerHTML = imagecombonametext;
- document.getElementById("costcombo").innerHTML = imagecombocosttext;
- document.getElementById("statscombo").innerHTML = imagecombostatstext;
- document.getElementById("desccombo").innerHTML = imagecombodesctext;
+//
+//  //assign and display item 2
+//  image2nametext = item[2].name
+//  image2costtext = item[2].cost
+//  image2statstext = item[2].stats.length
+//  image2desctext = item[2].desc
+//  document.getElementById("item2-image").src= image2filename;
+//  document.getElementById("name2").innerHTML = image2nametext;
+//  document.getElementById("cost2").innerHTML = image2costtext;
+//  document.getElementById("stats2").innerHTML = image2statstext;
+//  document.getElementById("desc2").innerHTML = image2desctext;
+//
+//  //do something for combo item
+//  imagecombonametext = item[3].name
+//  imagecombocosttext = item[3].cost
+//  imagecombostatstext = item[3].stats.length
+//  imagecombodesctext = item[3].desc
+//  // document.getElementById("combo-image").src= "";
+//  document.getElementById("namecombo").innerHTML = comboName;
+//  document.getElementById("costcombo").innerHTML = comboCost;
+//  document.getElementById("statscombo").innerHTML = comboStats;
+//  document.getElementById("desccombo").innerHTML = comboDesc;
 
 
  // document.getElementById("item2-image").src="item2.jpg";
