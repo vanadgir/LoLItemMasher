@@ -297,22 +297,20 @@ trayitems = [
 
 function statsToString(imageindex){
     stringarray = [];
+    statstring = "";
     for(i=0;i<stats.length;i++){
       if(item[imageindex].stats[i]!=0){
         stringarray[i] = "+ " + item[imageindex].stats[i] + " " + stats[i] + "<br>";
         console.log(stringarray);
         }
       }
-    // for(j=0;j<stringarray.length;j++){
-    //   if(stringarray[j]===undefined){
-    //     stringarray.splice(j,1)
-    //     console.log(stringarray);
-    //   }
-    // }
     stringarray = stringarray.filter(function( element ) {
    return element !== undefined;
 });
-    return stringarray;
+    for(j=0;j<stringarray.length;j++){
+      statstring += stringarray[j];
+    }
+    return statstring;
 };
 
 
