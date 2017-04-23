@@ -4,15 +4,29 @@ function imgRedirect(destination){
  location.href = destination;
 }
 
+var comboName = ""
+var comboCost = 0
+var comboStats = []
+var comboDesc = ""
+
+function getIndexByKey(arraytosearch, key, valuetosearch) {
+ for (var i = 0; i < arraytosearch.length; i++) {
+   if (arraytosearch[i][key] == valuetosearch) {
+     return i;
+      }
+    }
+    return null;
+}
+
 function pullStats(imagenumber){
   var item = {}
   item = [
   {
   	"id": 0,
-  	"name": "TEMPLATE",
-    "cost": 9000,
+  	"name": "EMPTY",
+    "cost":  null,
     "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  	"desc": "long string",
+  	"desc": "EMPTY",
   },
 
   {
@@ -21,7 +35,6 @@ function pullStats(imagenumber){
     "cost": 300,
     "stats": [0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Speed increase!",
-    "index": 1,
   },
 
   {
@@ -30,7 +43,6 @@ function pullStats(imagenumber){
     "cost": 125,
     "stats": [0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Mana ++",
-    "index": 2,
   },
 
   {
@@ -39,7 +51,6 @@ function pullStats(imagenumber){
     "cost": 425,
     "stats": [0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Combined output",
-    "index": 3,
   },
 
   {
@@ -193,7 +204,33 @@ function pullStats(imagenumber){
     "stats": [80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "Passive: Restores 6 Health every 5 seconds.\nUNIQUE Passive: Blocks 8 damage from single target attacks and spells from champions.",
   },
-]
+/**
+NEED TO PUT ALL REST OF ITEMS HERE
+**/
+  {
+    "id": 1,
+    "name": "Item 1",
+    "cost":  null,
+    "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    "desc": "Choose an item to go here.",
+  },
+
+  {
+    "id": 2,
+    "name": "Item 2",
+    "cost":  null,
+    "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    "desc": "Choose a second item to go here.",
+  },
+
+  {
+    "id": 3,
+    "name": comboName,
+    "cost": comboCost,
+    "stats": comboStats,
+    "desc": comboDesc,
+  },
+  ]
 
 
  // console.log("End of pullState function - file name id number of item " + imagenumber)
@@ -215,10 +252,14 @@ function pullStats(imagenumber){
 
  console.log(item[1])
 
- image1nametext = item[item[1].index].name
- image1costtext = item[item[1].index].cost
- image1statstext = item[item[1].index].stats.length
- image1desctext = item[item[1].index].desc
+ var item1index = functiontofindIndexByKeyValue(item, "id", "1001");
+ var item2index = functiontofindIndexByKeyValue(item, "id", "1004");
+ var comboindex = functiontofindIndexByKeyValue(item, "id", "3");
+
+ image1nametext = item[item1index].name
+ image1costtext = item[item1index].cost
+ image1statstext = item[item1index].stats.length
+ image1desctext = item[item1index].desc
 
 
  document.getElementById("item1-image").src= imagefilename;
