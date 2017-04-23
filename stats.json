@@ -2,10 +2,11 @@
 "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 {
   "stats": [
-    "health", "mana", "ad", "ap", "hpregen",
-    "mpregen", "movespeed", "attackspeed", "lifesteal", "spellvamp",
-    "armor", "mr", "lethality", "lethalityperc", "mpen",
-    "mpenperc", "gp5", "cdr", "crit" ]
+    "health", "mana", "ad", "ap",
+    "hpregen","mpregen", "movespeed", "attackspeed",
+    "lifesteal", "spellvamp","armor", "mr",
+    "lethality", "lethalityperc", "mpen","mpenperc",
+    "gp5", "cdr", "crit" ]
 },
 
 {
