@@ -20,12 +20,11 @@ var item2cost = 0
 var item2stats = []
 var item2desc = ""
 
-var stats = [
-  "Health", "Mana", "Attack Damage", "Ability Power",
+var stats = ["Health", "Mana", "Attack Damage", "Ability Power",
   "% Base Health Regen","% Base Mana Regen", "Movespeed", "Attack Speed",
   "% Lifesteal", "% Omnivamp","Armor", "Magic Resistance",
   "Lethality", "% Armor Pen", "Magic Pen","% Magic Pen",
-  "Gold/5", "Cooldown Reduction", "% Crit Chance" ]
+  "Gold/5", "Cooldown Reduction", "% Crit Chance"]
 
 
 function imgRedirect(destination){
@@ -296,8 +295,25 @@ trayitems = [
 
  console.log(item[imageindex])
 
-
-
+function statsToString(imageindex){
+    stringarray = [];
+    for(i=0;i<stats.length;i++){
+      if(item[imageindex].stats[i]!=0){
+        stringarray[i] = "+ " + item[imageindex].stats[i] + " " + stats[i] + "<br>";
+        console.log(stringarray);
+        }
+      }
+    // for(j=0;j<stringarray.length;j++){
+    //   if(stringarray[j]===undefined){
+    //     stringarray.splice(j,1)
+    //     console.log(stringarray);
+    //   }
+    // }
+    stringarray = stringarray.filter(function( element ) {
+   return element !== undefined;
+});
+    return stringarray;
+};
 
 
 if((item1select==false) && (item2select==false)){
@@ -305,16 +321,11 @@ if((item1select==false) && (item2select==false)){
  image1nametext = item[imageindex].name
  image1costtext = item[imageindex].cost
  image1desctext = item[imageindex].desc
+ image1statstext = statsToString(imageindex);
  document.getElementById("item1-image").src= image1filename;
  document.getElementById("name1").innerHTML = image1nametext;
  document.getElementById("cost1").innerHTML = image1costtext;
-for(i=0;i<stats.length;i++){
-  image1statstext = ""
-  if(item[1].stats[i] > 0){
-    image1statstext = image1statstext.concat("+ " + item[1].stats[i] + "" + stats[i] + "\n")
-  }
-  document.getElementById("stats1").innerHTML = image1statstext;
-}
+ document.getElementById("stats1").innerHTML = image1statstext;
  document.getElementById("desc1").innerHTML = image1desctext;
 }
 
