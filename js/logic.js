@@ -2119,7 +2119,7 @@ else if((item1select==true) && (item2select==false) && (imageindex==selectedItem
 }
 
 //case where both slots get filled, automatically create combo
-if((item1select==true) && item2select==true){
+if((item1select==true) && (item2select==true)){
     comboName = "MA BOI"
     comboCost = item[selectedItems[0]].cost + item[selectedItems[1]].cost;
     combocosttext = comboCost;
@@ -2136,8 +2136,28 @@ if((item1select==true) && item2select==true){
     document.getElementById("desccombo").innerHTML = combodesctext;
 }
 
+//case where both slots get filled, and same button as first pressed
+if((item1select==true) && (item2select==true) && (imageindex==selectedItems[0]) && (selectedItems[1]!==null)){
+  document.getElementById("item1-image").src= "./item/3637.png";
+  document.getElementById("name1").innerHTML = "Your first item goes here.";
+  document.getElementById("cost1").innerHTML = null
+  document.getElementById("stats1").innerHTML = null
+  document.getElementById("desc1").innerHTML = ""
+  document.getElementById("combo-image").src= "./item/3637.png";
+  document.getElementById("namecombo").innerHTML = "Your recipe will show up here.";
+  document.getElementById("costcombo").innerHTML = null
+  document.getElementById("statscombo").innerHTML = null
+  document.getElementById("desccombo").innerHTML = "Choose Wisely!"
+  item1select = false;
+  selectedItems[0] = null;
+}
 
- }
+}
+
+//case where first item gets removed and replaced while second item is still filled
+// if((item1select==false) && (item2select==true) && (selectedItems[0]==null) && (selectedItems[1]!==null))
+//
+//  }
 
  function resetStats(){
    document.getElementById("item1-image").src= "./item/3637.png";
