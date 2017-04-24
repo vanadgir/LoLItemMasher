@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -229,13 +230,18 @@
   <button onclick="pullStats(3902,215)" style="background: url(item/3902.png)"></button>
   <button onclick="pullStats(3903,216)" style="background: url(item/3903.png)"></button>
 
+  <font color=white><br>
+  <button onclick="resetStats()" style="background: url(item/3637.png)" style="font-style: white"></button>: RESET <br>
+  <button onclick="swapItems()" style="background: url(item/3642.png)"></button>: SWAP
+  </font>
+
     <div id="navbar">
       <div id="top">
         <h1>LoL Item Masher!</h1>
       </div>
       <div id="middle">
         <div class="item1">
-          <img id="item1-image"></img>
+          <img id="item1-image" style="background: url(item/3637.png)"></img>
           <div class="info">
             <span id="name1">Your first item goes here.</span></br>
             <span id="cost1"></span></br>
@@ -244,7 +250,7 @@
           </div>
         </div>
         <div class="combo">
-          <img id="combo-image"></img>
+          <img id="combo-image" style="background: url(item/3637.png)"></img>
           <div class="info">
             <span id="namecombo">Your recipe will show up here.</span></br>
             <span id="costcombo"></span></br>
@@ -253,7 +259,7 @@
           </div>
         </div>
         <div class="item2">
-          <img id="item2-image"></img>
+          <img id="item2-image" style="background: url(item/3637.png)"></img>
           <div class="info">
             <span id="name2">Your second item goes here.</span></br>
             <span id="cost2"></span></br>
@@ -261,7 +267,9 @@
             <span id="desc2"></span>
           </div>
         </div>
+
       </div>
     </div>
   </body>
 </html>
+

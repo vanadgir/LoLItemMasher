@@ -1,3 +1,4 @@
+<<<<<<< barnbranch-Mon4-24
 console.log("JS File loaded")
 
 var item1select = false
@@ -2055,9 +2056,19 @@ function statsToString(imageindex){
     return statstring;
 };
 
+// item is {id, name, cost, stats[], desc, index}
+// function combineItems(index1, index2){
+//   combo = {};
+//   statstring = "";
+//
+//   }
+// }
+
 
 if((item1select==false) && (item2select==false)){
  //assign and display item 1
+ item1select = true;
+ item1index = imageindex;
  image1nametext = item[imageindex].name
  image1costtext = item[imageindex].cost + " g"
  image1desctext = item[imageindex].desc
@@ -2068,19 +2079,25 @@ if((item1select==false) && (item2select==false)){
  document.getElementById("stats1").innerHTML = image1statstext;
  document.getElementById("desc1").innerHTML = image1desctext;
 }
+else if((item1select==true) && (item2select==false)){
+  item2select = true;
+  item2index = imageindex;
+  image2nametext = item[imageindex].name
+  image2costtext = item[imageindex].cost + " g"
+  image2desctext = item[imageindex].desc
+  image2statstext = statsToString(imageindex);
+  document.getElementById("item2-image").src= image2filename;
+  document.getElementById("name2").innerHTML = image2nametext;
+  document.getElementById("cost2").innerHTML = image2costtext;
+  document.getElementById("stats2").innerHTML = image2statstext;
+  document.getElementById("desc2").innerHTML = image2desctext;
+}
 
-//
-//  //assign and display item 2
-//  image2nametext = item[2].name
-//  image2costtext = item[2].cost
-//  image2statstext = item[2].stats.length
-//  image2desctext = item[2].desc
-//  document.getElementById("item2-image").src= image2filename;
-//  document.getElementById("name2").innerHTML = image2nametext;
-//  document.getElementById("cost2").innerHTML = image2costtext;
-//  document.getElementById("stats2").innerHTML = image2statstext;
-//  document.getElementById("desc2").innerHTML = image2desctext;
-//
+// if((item1select==true) && item2select==true){
+//   combineItems(item1index, item2index);
+// }
+
+
 //  //do something for combo item
 //  imagecombonametext = item[3].name
 //  imagecombocosttext = item[3].cost
@@ -2099,3 +2116,27 @@ if((item1select==false) && (item2select==false)){
 
 
 }
+
+function resetStats(){
+  document.getElementById("item1-image").src= "./item/3637.png";
+  document.getElementById("name1").innerHTML = "Your first item goes here.";
+  document.getElementById("cost1").innerHTML = null
+  document.getElementById("stats1").innerHTML = null
+  document.getElementById("desc1").innerHTML = ""
+  document.getElementById("item2-image").src= "./item/3637.png";
+  document.getElementById("name2").innerHTML = "Your second item goes here.";
+  document.getElementById("cost2").innerHTML = null
+  document.getElementById("stats2").innerHTML = null
+  document.getElementById("desc2").innerHTML = ""
+  document.getElementById("combo-image").src= "./item/3637.png";
+  document.getElementById("namecombo").innerHTML = "Your recipe will show up here.";
+  document.getElementById("costcombo").innerHTML = null
+  document.getElementById("statscombo").innerHTML = null
+  document.getElementById("desccombo").innerHTML = "Choose Wisely!"
+  item1select = false;
+  item2select = false;
+};
+
+function swapItems(){
+
+};
