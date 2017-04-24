@@ -48,8 +48,7 @@ div.item1{
   display: inline-block;
   text-align: center;
   width: 330px;
-  left: 5%;
-  // background-color: #item1avgcolor;
+  left: 6%;
   background-color: white;
   height: 175px;
   border-radius: 10px;
@@ -63,8 +62,7 @@ div.combo{
   display: inline-block;
   text-align: center;
   width: 330px;
-  left: 20%;
-  // background-color: #comboavgcolor;
+  left: 17%;
   background-color: white;
   height: 175px;
   border-radius: 10px;
@@ -78,14 +76,15 @@ div.item2{
   display: inline-block;
   text-align: center;
   width: 330px;
-  left: 35%;
-  // background-color: #item2avgcolor;
+  left: 30%;
   background-color: white;
   height: 175px;
   border-radius: 10px;
   border: solid 3px;
   border-color: black;
 }
+
+
 
 #item1-image {
   position: absolute;
@@ -94,7 +93,7 @@ div.item2{
   width: 64px;
   left: 0%;
   border: solid 1px;
-  border-color: orange;
+  border-color: black;
   border-radius: 10px;
   margin: 6px;
   text-align: center;
@@ -115,7 +114,7 @@ div.item2{
   width: 64px;
   left: 0%;
   border: solid 1px;
-  border-color: orange;
+  border-color: grey;
   border-radius: 10px;
   margin: 6px;
   text-align: center;
@@ -128,7 +127,7 @@ div.item2{
   width: 64px;
   left: 0%;
   border: solid 1px;
-  border-color: orange;
+  border-color: grey;
   border-radius: 10px;
   margin: 6px;
   text-align: center;
