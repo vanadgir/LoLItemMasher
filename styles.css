@@ -49,6 +49,7 @@ div.item1{
   text-align: center;
   width: 330px;
   left: 5%;
+  // background-color: #item1avgcolor;
   background-color: white;
   height: 175px;
   border-radius: 10px;
@@ -63,6 +64,7 @@ div.combo{
   text-align: center;
   width: 330px;
   left: 20%;
+  // background-color: #comboavgcolor;
   background-color: white;
   height: 175px;
   border-radius: 10px;
@@ -77,6 +79,7 @@ div.item2{
   text-align: center;
   width: 330px;
   left: 35%;
+  // background-color: #item2avgcolor;
   background-color: white;
   height: 175px;
   border-radius: 10px;
