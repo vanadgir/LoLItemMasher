@@ -1,4 +1,3 @@
-<<<<<<< barnbranch-Mon4-24
 console.log("JS File loaded")
 
 var item1select = false
