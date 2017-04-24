@@ -2055,10 +2055,19 @@ function statsToString(imageindex){
     return statstring;
 };
 
+// item is {id, name, cost, stats[], desc, index}
+// function combineItems(index1, index2){
+//   combo = {};
+//   statstring = "";
+//
+//   }
+// }
+
 
 if((item1select==false) && (item2select==false)){
  //assign and display item 1
  item1select = true;
+ item1index = imageindex;
  image1nametext = item[imageindex].name
  image1costtext = item[imageindex].cost + " g"
  image1desctext = item[imageindex].desc
@@ -2071,6 +2080,7 @@ if((item1select==false) && (item2select==false)){
 }
 else if((item1select==true) && (item2select==false)){
   item2select = true;
+  item2index = imageindex;
   image2nametext = item[imageindex].name
   image2costtext = item[imageindex].cost + " g"
   image2desctext = item[imageindex].desc
@@ -2081,6 +2091,10 @@ else if((item1select==true) && (item2select==false)){
   document.getElementById("stats2").innerHTML = image2statstext;
   document.getElementById("desc2").innerHTML = image2desctext;
 }
+
+// if((item1select==true) && item2select==true){
+//   combineItems(item1index, item2index);
+// }
 
 
 //  //do something for combo item
