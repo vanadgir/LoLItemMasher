@@ -20,6 +20,8 @@ var item2cost = 0
 var item2stats = []
 var item2desc = ""
 
+var selectedItems = [null, null];
+
 var stats = ["Health", "Mana", "Attack Damage", "Ability Power",
   "% Base Health Regen","% Base Mana Regen", "Movespeed", "Attack Speed",
   "% Lifesteal", "% Omnivamp","Armor", "Magic Resistance",
@@ -2063,11 +2065,11 @@ function statsToString(imageindex){
 //   }
 // }
 
-
-if((item1select==false) && (item2select==false)){
- //assign and display item 1
+// case where both slots empty, nothing picked yet
+if((item1select==false) && (item2select==false) && (selectedItems[0]==null) && (selectedItems[1]==null)){
+ //assign and display item
  item1select = true;
- item1index = imageindex;
+ selectedItems[0] = imageindex;
  image1nametext = item[imageindex].name
  image1costtext = item[imageindex].cost + " g"
  image1desctext = item[imageindex].desc
@@ -2078,9 +2080,10 @@ if((item1select==false) && (item2select==false)){
  document.getElementById("stats1").innerHTML = image1statstext;
  document.getElementById("desc1").innerHTML = image1desctext;
 }
-else if((item1select==true) && (item2select==false)){
+//case where first slot filled, second slot empty, different button pressed
+else if((item1select==true) && (item2select==false) && (imageindex != selectedItems[0]) && (selectedItems[1]==null)){
   item2select = true;
-  item2index = imageindex;
+  selectedItems[1] = imageindex;
   image2nametext = item[imageindex].name
   image2costtext = item[imageindex].cost + " g"
   image2desctext = item[imageindex].desc
@@ -2091,10 +2094,21 @@ else if((item1select==true) && (item2select==false)){
   document.getElementById("stats2").innerHTML = image2statstext;
   document.getElementById("desc2").innerHTML = image2desctext;
 }
+//case where first slot filed, second slot empty, and same button as first pressed
+else if((item1select==true) && (item2select==false) && (imageindex==selectedItems[0]) && (selectedItems[1]==null)){
+  document.getElementById("item1-image").src= "./item/3637.png";
+  document.getElementById("name1").innerHTML = "Your first item goes here.";
+  document.getElementById("cost1").innerHTML = null
+  document.getElementById("stats1").innerHTML = null
+  document.getElementById("desc1").innerHTML = ""
+  item1select = false;
+  selectedItems[0] = null;
+}
 
-// if((item1select==true) && item2select==true){
-//   combineItems(item1index, item2index);
-// }
+//case where both slots get filled, automatically create combo
+  if((item1select==true) && item2select==true){
+    combineItems(item1index, item2index);
+}
 
 
 //  //do something for combo item
@@ -2107,11 +2121,6 @@ else if((item1select==true) && (item2select==false)){
 //  document.getElementById("costcombo").innerHTML = comboCost;
 //  document.getElementById("statscombo").innerHTML = comboStats;
 //  document.getElementById("desccombo").innerHTML = comboDesc;
-
-
- // document.getElementById("item2-image").src="item2.jpg";
- // document.getElementById("combo-image").src="combo.jpg";
-
 
 
 }
@@ -2134,7 +2143,9 @@ function resetStats(){
   document.getElementById("desccombo").innerHTML = "Choose Wisely!"
   item1select = false;
   item2select = false;
-};
+  selectedItems[0] = null;
+  selectedItems[1] = null;
+ };
 
 function swapItems(){
 
