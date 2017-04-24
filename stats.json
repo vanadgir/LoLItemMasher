@@ -1,19 +1,19 @@
 
 "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 {
-  "stats": [
-    "health", "mana", "ad", "ap", "hpregen",
-    "mpregen", "movespeed", "attackspeed", "lifesteal", "spellvamp",
-    "armor", "mr", "lethality", "lethalityperc", "mpen",
-    "mpenperc", "gp5", "cdr", "crit" ]
+  "stats": ["Health", "Mana", "Attack Damage", "Ability Power",
+    "% Base Health Regen","% Base Mana Regen", "Movespeed", "Attack Speed",
+    "% Lifesteal", "% Omnivamp","Armor", "Magic Resistance",
+    "Lethality", "% Armor Pen", "Magic Pen","% Magic Pen",
+    "Gold/5", "Cooldown Reduction", "% Crit Chance"]
 },
 
 {
 	"id": 0,
-	"name": "TEMPLATE",
-  "cost": 9000,
-  "stats": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	"desc": "long string",
+	"name": "Make Selection",
+  "cost": null,
+  "stats": null,
+	"desc": null,
 },
 
 {
