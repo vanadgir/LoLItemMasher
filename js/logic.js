@@ -1688,7 +1688,7 @@ function pullStats(imagenumber, imageindex){
     "name": "Sterak's Gage",
     "cost": 2600,
     "stats": [400,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0],
-    "desc": "",
+    "desc": "UNIQUE Passive - Lifeline: Upon taking at least 400 to 1800 damage (based on level) within 5 seconds, gain a rapidly decaying Shield for 30% of your maximum Health for 8 seconds (60 second cooldown). <br> Sterak's Fury: When Lifeline triggers, grow in size and strength, gaining +25% additional Base Attack Damage.",
     "index": 183,
     },
 
@@ -2059,12 +2059,24 @@ function generateComboDesc(){
   for(i=0;i<arraysize;i++){
     if (wordfrom == 1){
       comboDesc += " " + item1desc[i];
+      if (item1desc[i] == "UNIQUE"){
+        comboDesc += " " + item1desc[i+1];
+      }
+      else if (item1desc[i] == "-"){
+        comboDesc += " " + item1desc[i+1];
+      }
       if ((item2desc[i+1] !== undefined) && (item1desc[i] !== item2desc[i+1])){
         wordfrom = 2;
         }
       }
     else if (wordfrom == 2){
       comboDesc += " " + item2desc[i];
+      if (item2desc[i] == "UNIQUE"){
+        comboDesc += " " + item2desc[i+1];
+      }
+      else if (item2desc[i] == "-"){
+        comboDesc += " " + item2desc[i+1];
+      }
       if ((item1desc[i+1] !== undefined) && (item2desc[i] !== item1desc[i+1]))
         wordfrom = 1;
         }
