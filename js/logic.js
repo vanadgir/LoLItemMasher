@@ -1986,22 +1986,9 @@ function pullStats(imagenumber, imageindex){
 
   ]
 
-  // console.log("End of pullState function - file name id number of item " + imagenumber)
   image1filename = "./item/" + imagenumber + ".png"
   image2filename = "./item/" + imagenumber + ".png"
   combofilename = "./item/3647.png"
-  // console.log(imagefilename)
-
-  //
-  // var item1Image = document.getElementById("item1-image");
-  // if (item1Image.src == "") {
-  //   document.getElementById("item1-image").src=imagefilename;
-  // } else if (item1Image.src == imagefilename) {
-  //   document.getElementById("item1-image").src= "";
-  // }
-  // else if (item1Image.src != "" && item1Image.src != imagefilename) {
-  //   document.getElementById("item2-image").src=imagefilename;
-  // }
 
   function statsToString(imageindex){
     stringarray = [];
