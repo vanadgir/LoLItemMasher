@@ -3,11 +3,6 @@ console.log("JS File loaded")
 var item1select = false
 var item2select = false
 
-var comboName = ""
-var comboCost = 0
-var comboStats = []
-var comboDesc = ""
-
 var image1number = 0;
 var item1name = ""
 var item1cost = 0
@@ -164,7 +159,7 @@ function pullStats(imagenumber, imageindex){
 
   {
   	"id": 1038,
-  	"name": "B. F. Sword",
+  	"name": "B.F. Sword",
     "cost": 1300,
     "stats": [0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   	"desc": "",
@@ -2046,10 +2041,8 @@ function generateComboDesc(){
   comboDesc = ""
   item1desc = item[selectedItems[0]].desc.split(" ");
   item2desc = item[selectedItems[1]].desc.split(" ");
-
   arraysize = 0;
-
-  if (item1desc.length>item2desc.length){
+  if (item1desc.length>=item2desc.length){
     arraysize = item1desc.length;
   }
   else if (item2desc.length>item1desc.length){
@@ -2058,32 +2051,51 @@ function generateComboDesc(){
   wordfrom = 1;
   for(i=0;i<arraysize;i++){
     if (wordfrom == 1){
-      comboDesc += " " + item1desc[i];
-      if (item1desc[i] == "UNIQUE"){
-        comboDesc += " " + item1desc[i+1];
-      }
-      else if (item1desc[i] == "-"){
-        comboDesc += " " + item1desc[i+1];
-      }
+      comboDesc += item1desc[i] + " ";
       if ((item2desc[i+1] !== undefined) && (item1desc[i] !== item2desc[i+1])){
         wordfrom = 2;
         }
       }
     else if (wordfrom == 2){
-      comboDesc += " " + item2desc[i];
-      if (item2desc[i] == "UNIQUE"){
-        comboDesc += " " + item2desc[i+1];
-      }
-      else if (item2desc[i] == "-"){
-        comboDesc += " " + item2desc[i+1];
-      }
+      comboDesc += item2desc[i] + " ";
       if ((item1desc[i+1] !== undefined) && (item2desc[i] !== item1desc[i+1]))
         wordfrom = 1;
         }
       }
   return comboDesc;
+};
+
+function generateComboName(){
+  comboName = "";
+  itemname1 = item[selectedItems[0]].name.split(" ");
+  itemname2 = item[selectedItems[1]].name.split(" ");
+  arraysize = 0;
+
+  if (itemname1.length>=itemname2.length){
+    arraysize = itemname1.length;
+  }
+  else if (itemname2.length>itemname1.length){
+    arraysize = itemname2.length;
   }
 
+  wordfrom = 1;
+
+  for(i=0;i<arraysize;i++){
+      if (wordfrom == 1){
+        comboName += itemname1[i] + " ";
+        if (itemname2[i+1] !== undefined){
+          wordfrom = 2;
+        }
+      }
+      else if (wordfrom == 2){
+        comboName += itemname2[i] + " ";
+        if (itemname1[i+1] !== undefined){
+          wordfrom = 1;
+        }
+      }
+    }
+  return comboName;
+};
 
 
 
@@ -2150,26 +2162,24 @@ else if((item2select==true) && (imageindex == selectedItems[1])){
 
 //case where both slots get filled, automatically create combo
 if((item1select==true) && (item2select==true)){
-    comboName = "MA BOI"
+    combonametext = generateComboName();
     comboCost = item[selectedItems[0]].cost + item[selectedItems[1]].cost;
     combocosttext = comboCost;
+    comboStats = [];
     for(i=0;i<stats.length;i++){
       comboStats[i] = item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i];
     }
     combostatstext = comboStatsToString();
-    generateComboDesc();
-    // comboDesc = "It's craAaAaAaazy good!!"
-    combodesctext = comboDesc;
+    combodesctext = generateComboDesc();
     document.getElementById("combo-image").src= combofilename;
-    document.getElementById("namecombo").innerHTML = comboName;
+    document.getElementById("namecombo").innerHTML = combonametext;
     document.getElementById("costcombo").innerHTML = combocosttext + " g";
     document.getElementById("statscombo").innerHTML = combostatstext;
     document.getElementById("desccombo").innerHTML = combodesctext;
 }
 
 
-}
-
+} //end pullstats
 
  function resetStats(){
    document.getElementById("item1-image").src = "./item/3637.png";
