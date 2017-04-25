@@ -2065,142 +2065,142 @@ function pullStats(imagenumber, imageindex){
     return comboDesc;
   };
 
-    function generateComboName(){
-      comboName = "";
-      itemname1 = item[selectedItems[0]].name.split(" ");
-      itemname2 = item[selectedItems[1]].name.split(" ");
-      arraysize = 0;
-      if (itemname1.length>=itemname2.length){
-        arraysize = itemname1.length;
-      }
-      else if (itemname2.length>itemname1.length){
-        arraysize = itemname2.length;
-      }
-      wordfrom = 1;
-      for(i=0;i<arraysize;i++){
-        if (wordfrom == 1){
-          comboName += itemname1[i] + " ";
-          if (itemname2[i+1] !== undefined){
-            wordfrom = 2;
-          }
-          else if ((i == itemname1.length-2) && (itemname2.length == 1)){
-            comboName += itemname2[0] + " ";
-            return comboName;
-          }
+  function generateComboName(){
+    comboName = "";
+    itemname1 = item[selectedItems[0]].name.split(" ");
+    itemname2 = item[selectedItems[1]].name.split(" ");
+    arraysize = 0;
+    if (itemname1.length>=itemname2.length){
+      arraysize = itemname1.length;
+    }
+    else if (itemname2.length>itemname1.length){
+      arraysize = itemname2.length;
+    }
+    wordfrom = 1;
+    for(i=0;i<arraysize;i++){
+      if (wordfrom == 1){
+        comboName += itemname1[i] + " ";
+        if (itemname2[i+1] !== undefined){
+          wordfrom = 2;
         }
-        else if (wordfrom == 2){
-          comboName += itemname2[i] + " ";
-          if (itemname1[i+1] !== undefined){
-            wordfrom = 1;
-          }
+        else if ((i == itemname1.length-2) && (itemname2.length == 1)){
+          comboName += itemname2[0] + " ";
+          return comboName;
         }
       }
-      return comboName;
-    };
-
-    // case where both slots empty, nothing picked yet
-    if((item1select==false) && (item2select==false) && (selectedItems[0]==null) && (selectedItems[1]==null)){
-      //assign and display item
-      item1select = true;
-      selectedItems[0] = imageindex;
-      image1nametext = item[imageindex].name
-      image1costtext = item[imageindex].cost + " g"
-      image1desctext = item[imageindex].desc
-      image1statstext = statsToString(imageindex);
-      document.getElementById("item1-image").src= image1filename;
-      document.getElementById("name1").innerHTML = image1nametext;
-      document.getElementById("cost1").innerHTML = image1costtext;
-      document.getElementById("stats1").innerHTML = image1statstext;
-      document.getElementById("desc1").innerHTML = image1desctext;
-    }
-    //case where first slot filled, second slot empty, different button pressed
-    else if((item1select==true) && (item2select==false) && (imageindex != selectedItems[0])){
-      item2select = true;
-      selectedItems[1] = imageindex;
-      image2nametext = item[imageindex].name
-      image2costtext = item[imageindex].cost + " g"
-      image2desctext = item[imageindex].desc
-      image2statstext = statsToString(imageindex);
-      document.getElementById("item2-image").src= image2filename;
-      document.getElementById("name2").innerHTML = image2nametext;
-      document.getElementById("cost2").innerHTML = image2costtext;
-      document.getElementById("stats2").innerHTML = image2statstext;
-      document.getElementById("desc2").innerHTML = image2desctext;
-    }
-    //case where first is pressed while filled
-    else if((item1select==true) && (imageindex == selectedItems[0])){
-      item1select = false;
-      selectedItems[0] = null;
-      document.getElementById("item1-image").src= "./item/3637.png";
-      document.getElementById("name1").innerHTML = "";
-      document.getElementById("cost1").innerHTML = null
-      document.getElementById("stats1").innerHTML = null
-      document.getElementById("desc1").innerHTML = ""
-      document.getElementById("combo-image").src= "./item/3637.png";
-      document.getElementById("namecombo").innerHTML = "";
-      document.getElementById("costcombo").innerHTML = null
-      document.getElementById("statscombo").innerHTML = null
-      document.getElementById("desccombo").innerHTML = ""
-    }
-    //case where second is pressed while filled
-    else if((item2select==true) && (imageindex == selectedItems[1])){
-      item2select = false;
-      selectedItems[1] = null;
-      document.getElementById("item2-image").src= "./item/3637.png";
-      document.getElementById("name2").innerHTML = "";
-      document.getElementById("cost2").innerHTML = null
-      document.getElementById("stats2").innerHTML = null
-      document.getElementById("desc2").innerHTML = ""
-      document.getElementById("combo-image").src= "./item/3637.png";
-      document.getElementById("namecombo").innerHTML = "";
-      document.getElementById("costcombo").innerHTML = null
-      document.getElementById("statscombo").innerHTML = null
-      document.getElementById("desccombo").innerHTML = ""
-    }
-
-    //case where both slots get filled, automatically create combo
-    if((item1select==true) && (item2select==true)){
-      combonametext = generateComboName();
-      comboCost = item[selectedItems[0]].cost + item[selectedItems[1]].cost;
-      combocosttext = comboCost;
-      comboStats = [];
-      for(i=0;i<stats.length;i++){
-        comboStats[i] = item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i];
+      else if (wordfrom == 2){
+        comboName += itemname2[i] + " ";
+        if (itemname1[i+1] !== undefined){
+          wordfrom = 1;
+        }
       }
-      combostatstext = comboStatsToString();
-      combodesctext = generateComboDesc();
-      document.getElementById("combo-image").src= combofilename;
-      document.getElementById("namecombo").innerHTML = combonametext;
-      document.getElementById("costcombo").innerHTML = combocosttext + " g";
-      document.getElementById("statscombo").innerHTML = combostatstext;
-      document.getElementById("desccombo").innerHTML = combodesctext;
     }
+    return comboName;
+  };
+
+  // case where both slots empty, nothing picked yet
+  if((item1select==false) && (item2select==false) && (selectedItems[0]==null) && (selectedItems[1]==null)){
+    //assign and display item
+    item1select = true;
+    selectedItems[0] = imageindex;
+    image1nametext = item[imageindex].name
+    image1costtext = item[imageindex].cost + " g"
+    image1desctext = item[imageindex].desc
+    image1statstext = statsToString(imageindex);
+    document.getElementById("item1-image").src= image1filename;
+    document.getElementById("name1").innerHTML = image1nametext;
+    document.getElementById("cost1").innerHTML = image1costtext;
+    document.getElementById("stats1").innerHTML = image1statstext;
+    document.getElementById("desc1").innerHTML = image1desctext;
+  }
+  //case where first slot filled, second slot empty, different button pressed
+  else if((item1select==true) && (item2select==false) && (imageindex != selectedItems[0])){
+    item2select = true;
+    selectedItems[1] = imageindex;
+    image2nametext = item[imageindex].name
+    image2costtext = item[imageindex].cost + " g"
+    image2desctext = item[imageindex].desc
+    image2statstext = statsToString(imageindex);
+    document.getElementById("item2-image").src= image2filename;
+    document.getElementById("name2").innerHTML = image2nametext;
+    document.getElementById("cost2").innerHTML = image2costtext;
+    document.getElementById("stats2").innerHTML = image2statstext;
+    document.getElementById("desc2").innerHTML = image2desctext;
+  }
+  //case where first is pressed while filled
+  else if((item1select==true) && (imageindex == selectedItems[0])){
+    item1select = false;
+    selectedItems[0] = null;
+    document.getElementById("item1-image").src= "./item/3637.png";
+    document.getElementById("name1").innerHTML = "";
+    document.getElementById("cost1").innerHTML = null
+    document.getElementById("stats1").innerHTML = null
+    document.getElementById("desc1").innerHTML = ""
+    document.getElementById("combo-image").src= "./item/3637.png";
+    document.getElementById("namecombo").innerHTML = "";
+    document.getElementById("costcombo").innerHTML = null
+    document.getElementById("statscombo").innerHTML = null
+    document.getElementById("desccombo").innerHTML = ""
+  }
+  //case where second is pressed while filled
+  else if((item2select==true) && (imageindex == selectedItems[1])){
+    item2select = false;
+    selectedItems[1] = null;
+    document.getElementById("item2-image").src= "./item/3637.png";
+    document.getElementById("name2").innerHTML = "";
+    document.getElementById("cost2").innerHTML = null
+    document.getElementById("stats2").innerHTML = null
+    document.getElementById("desc2").innerHTML = ""
+    document.getElementById("combo-image").src= "./item/3637.png";
+    document.getElementById("namecombo").innerHTML = "";
+    document.getElementById("costcombo").innerHTML = null
+    document.getElementById("statscombo").innerHTML = null
+    document.getElementById("desccombo").innerHTML = ""
+  }
+
+  //case where both slots get filled, automatically create combo
+  if((item1select==true) && (item2select==true)){
+    combonametext = generateComboName();
+    comboCost = item[selectedItems[0]].cost + item[selectedItems[1]].cost;
+    combocosttext = comboCost;
+    comboStats = [];
+    for(i=0;i<stats.length;i++){
+      comboStats[i] = item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i];
+    }
+    combostatstext = comboStatsToString();
+    combodesctext = generateComboDesc();
+    document.getElementById("combo-image").src= combofilename;
+    document.getElementById("namecombo").innerHTML = combonametext;
+    document.getElementById("costcombo").innerHTML = combocosttext + " g";
+    document.getElementById("statscombo").innerHTML = combostatstext;
+    document.getElementById("desccombo").innerHTML = combodesctext;
+  }
 
 
 } //end pullstats
 
-  function resetStats(){
-    document.getElementById("item1-image").src = "./item/3637.png";
-    document.getElementById("name1").innerHTML = "Your first item goes here.";
-    document.getElementById("cost1").innerHTML = null
-    document.getElementById("stats1").innerHTML = null
-    document.getElementById("desc1").innerHTML = ""
-    document.getElementById("item2-image").src = "./item/3637.png";
-    document.getElementById("name2").innerHTML = "Your second item goes here.";
-    document.getElementById("cost2").innerHTML = null
-    document.getElementById("stats2").innerHTML = null
-    document.getElementById("desc2").innerHTML = ""
-    document.getElementById("combo-image").src = "./item/3637.png";
-    document.getElementById("namecombo").innerHTML = "Your recipe will show up here.";
-    document.getElementById("costcombo").innerHTML = null
-    document.getElementById("statscombo").innerHTML = null
-    document.getElementById("desccombo").innerHTML = "Choose Wisely!"
-    item1select = false;
-    item2select = false;
-    selectedItems[0] = null;
-    selectedItems[1] = null;
-  };
+function resetStats(){
+  document.getElementById("item1-image").src = "./item/3637.png";
+  document.getElementById("name1").innerHTML = "Your first item goes here.";
+  document.getElementById("cost1").innerHTML = null
+  document.getElementById("stats1").innerHTML = null
+  document.getElementById("desc1").innerHTML = ""
+  document.getElementById("item2-image").src = "./item/3637.png";
+  document.getElementById("name2").innerHTML = "Your second item goes here.";
+  document.getElementById("cost2").innerHTML = null
+  document.getElementById("stats2").innerHTML = null
+  document.getElementById("desc2").innerHTML = ""
+  document.getElementById("combo-image").src = "./item/3637.png";
+  document.getElementById("namecombo").innerHTML = "Your recipe will show up here.";
+  document.getElementById("costcombo").innerHTML = null
+  document.getElementById("statscombo").innerHTML = null
+  document.getElementById("desccombo").innerHTML = "Choose Wisely!"
+  item1select = false;
+  item2select = false;
+  selectedItems[0] = null;
+  selectedItems[1] = null;
+};
 
-  // function swapItems(){
-  //
-  // };
+// function swapItems(){
+//
+// };
