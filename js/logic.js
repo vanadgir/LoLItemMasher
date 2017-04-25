@@ -2070,21 +2070,22 @@ function generateComboName(){
   itemname1 = item[selectedItems[0]].name.split(" ");
   itemname2 = item[selectedItems[1]].name.split(" ");
   arraysize = 0;
-
   if (itemname1.length>=itemname2.length){
     arraysize = itemname1.length;
   }
   else if (itemname2.length>itemname1.length){
     arraysize = itemname2.length;
   }
-
   wordfrom = 1;
-
   for(i=0;i<arraysize;i++){
       if (wordfrom == 1){
         comboName += itemname1[i] + " ";
         if (itemname2[i+1] !== undefined){
           wordfrom = 2;
+        }
+        else if ((i == itemname1.length-2) && (itemname2.length == 1)){
+          comboName += itemname2[0] + " ";
+          return comboName;
         }
       }
       else if (wordfrom == 2){
