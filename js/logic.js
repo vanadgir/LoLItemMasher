@@ -2008,15 +2008,12 @@ function pullStats(imagenumber, imageindex){
  //   document.getElementById("item2-image").src=imagefilename;
  // }
 
- console.log(item[imageindex])
-
 function statsToString(imageindex){
     stringarray = [];
     statstring = "";
     for(i=0;i<stats.length;i++){
       if(item[imageindex].stats[i]!=0){
         stringarray[i] = "+ " + item[imageindex].stats[i] + " " + stats[i] + "<br>";
-        console.log(stringarray);
         }
       }
     stringarray = stringarray.filter(function( element ) {
@@ -2034,7 +2031,6 @@ function comboStatsToString(){
     for(i=0;i<stats.length;i++){
       if(comboStats[i]!=0){
         comboarray[i] = "+ " + comboStats[i] + " " + stats[i] + "<br>";
-        console.log(comboarray);
         }
       }
     comboarray = comboarray.filter(function( element ) {
@@ -2045,6 +2041,38 @@ function comboStatsToString(){
     }
     return combostatstring;
 };
+
+function generateComboDesc(){
+  comboDesc = ""
+  item1desc = item[selectedItems[0]].desc.split(" ");
+  item2desc = item[selectedItems[1]].desc.split(" ");
+
+  arraysize = 0;
+
+  if (item1desc.length>item2desc.length){
+    arraysize = item1desc.length;
+  }
+  else if (item2desc.length>item1desc.length){
+    arraysize = item2desc.length;
+  }
+  wordfrom = 1;
+  for(i=0;i<arraysize;i++){
+    if (wordfrom == 1){
+      comboDesc += " " + item1desc[i];
+      if ((item2desc[i+1] !== undefined) && (item1desc[i] !== item2desc[i+1])){
+        wordfrom = 2;
+        }
+      }
+    else if (wordfrom == 2){
+      comboDesc += " " + item2desc[i];
+      if ((item1desc[i+1] !== undefined) && (item2desc[i] !== item1desc[i+1]))
+        wordfrom = 1;
+        }
+      }
+  return comboDesc;
+  }
+
+
 
 
 // case where both slots empty, nothing picked yet
@@ -2117,7 +2145,8 @@ if((item1select==true) && (item2select==true)){
       comboStats[i] = item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i];
     }
     combostatstext = comboStatsToString();
-    comboDesc = "It's craAaAaAaazy good!!"
+    generateComboDesc();
+    // comboDesc = "It's craAaAaAaazy good!!"
     combodesctext = comboDesc;
     document.getElementById("combo-image").src= combofilename;
     document.getElementById("namecombo").innerHTML = comboName;
