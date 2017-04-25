@@ -2158,27 +2158,21 @@ if((item1select==true) && (item2select==true)){
 }
 
 
-//case where first item gets removed and replaced while second item is still filled
-// if((item1select==false) && (item2select==true) && (selectedItems[0]==null) && (selectedItems[1]!==null)){
-//
-//  }
-
-
 }
 
 
  function resetStats(){
-   document.getElementById("item1-image").src= "./item/3637.png";
+   document.getElementById("item1-image").src = "./item/3637.png";
    document.getElementById("name1").innerHTML = "Your first item goes here.";
    document.getElementById("cost1").innerHTML = null
    document.getElementById("stats1").innerHTML = null
    document.getElementById("desc1").innerHTML = ""
-   document.getElementById("item2-image").src= "./item/3637.png";
+   document.getElementById("item2-image").src = "./item/3637.png";
    document.getElementById("name2").innerHTML = "Your second item goes here.";
    document.getElementById("cost2").innerHTML = null
    document.getElementById("stats2").innerHTML = null
    document.getElementById("desc2").innerHTML = ""
-   document.getElementById("combo-image").src= "./item/3637.png";
+   document.getElementById("combo-image").src = "./item/3637.png";
    document.getElementById("namecombo").innerHTML = "Your recipe will show up here.";
    document.getElementById("costcombo").innerHTML = null
    document.getElementById("statscombo").innerHTML = null
