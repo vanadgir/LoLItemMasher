@@ -22,9 +22,6 @@ var item2desc = ""
 
 var selectedItems = [null, null];
 
-var buy = new Audio('./audio/buy.mp3');
-var sell = new Audio('./audio/sell.mp3');
-
 var stats = ["Health", "Mana", "Attack Damage", "Ability Power",
   "% Base Health Regen","% Base Mana Regen", "% Movespeed", "% Attack Speed",
   "% Lifesteal", "% Base Attack Damage","Armor", "Magic Resistance",
