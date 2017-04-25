@@ -786,7 +786,7 @@ function pullStats(imagenumber, imageindex){
     {
     "id": 3047,
     "name": "Ninja tabi",
-    "cost": null,
+    "cost": 1100,
     "stats": [0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,0,0,0],
     "desc": "UNIQUE Passive: Blocks 12% of the damage from basic attacks. <br> UNIQUE Passive - Enhanced Movement: +45 Movement Speed",
     "index": 83,
@@ -1263,7 +1263,7 @@ function pullStats(imagenumber, imageindex){
     {
     "id": 3136,
     "name": "Haunting Guise",
-    "cost": null,
+    "cost": 1500,
     "stats": [200,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     "desc": "UNIQUE Passive - Eyes of Pain: +15 Magic Penetration",
     "index": 136,
@@ -1479,7 +1479,7 @@ function pullStats(imagenumber, imageindex){
     {
     "id": 3187,
     "name": "Arcane Sweeper",
-    "cost": null,
+    "cost": 2150,
     "stats": [225,250,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,20,0],
     "desc": "UNIQUE Passive - Trap Detection: Grants True Sight of nearby enemy traps. <br> UNIQUE Active - Hunter's Sight: An arcane mist grants vision in the target area for 5 seconds, revealing enemy champions in the area for 3 seconds (60 second cooldown).",
     "index": 160,
@@ -1502,7 +1502,7 @@ function pullStats(imagenumber, imageindex){
     "desc": "UNIQUE Passive: Killing a unit grants 0.5 bonus Armor and Ability Power. This bonus stacks up to 30 times.",
     "index": 162,
     },
-// ctrl f VIKTOR ITEMS
+
     {
     "id": 3196,
     "name": "",
@@ -1601,7 +1601,7 @@ function pullStats(imagenumber, imageindex){
     "desc": "UNIQUE Passive - Tribute: Spells and basic attacks against champions or buildings deal 10 additional damage and grant 8 Gold. This can occur up to 3 times every 30 seconds. Killing a minion disables this passive for 12 seconds. <br> Limited to 1 Gold Income Item.",
     "index": 173,
     },
-// ctrl f TRINKETS
+
     {
     "id": 3340,
     "name": "",
@@ -1673,7 +1673,7 @@ function pullStats(imagenumber, imageindex){
     "desc": "UNIQUE Passive - Spoils of War: Melee basic attacks execute minions below 320 (+20 per level) Health. Killing a minion heals the owner and the nearest allied champion for 50 Health and grants them kill Gold. These effects require a nearby ally. Recharges every 30 seconds. Max 4 charges. <br> UNIQUE Active: Grants a shield to you and an ally equal to 10% of your maximum Health for 4 seconds. After 4 seconds, the shields explode to slow nearby enemies by 40% for 2 seconds (60 second cooldown). Automatically targets the most wounded ally if cast upon self. <br> Limited to 1 Gold Income Item.",
     "index": 181,
     },
-// ctrl f DOMINION
+
     {
     "id": 3460,
     "name": "",
@@ -1718,7 +1718,7 @@ function pullStats(imagenumber, imageindex){
     "desc": "UNIQUE Passive - Point Runner: Builds up to +20% Movement Speed over 2 seconds while near turrets, fallen turrets and Void Gates. <br> UNIQUE Active: Spawns a Void Gate for 120 seconds (120 second cooldown). <br> Every 4 seconds the gate makes a Voidspawn. The first and every fourth Voidspawn gains 15% of maximum Health as damage.",
     "index": 186,
     },
-// ctrl f KALISTA
+
     {
     "id": 3599,
     "name": "",
@@ -1727,7 +1727,7 @@ function pullStats(imagenumber, imageindex){
     "desc": "",
     "index": 187,
     },
-// ctrl f GAME MODE SUMMONER SPELLS
+
     {
     "id": 3630,
     "name": "",
@@ -1961,7 +1961,7 @@ function pullStats(imagenumber, imageindex){
     "desc": "UNIQUE Passive: +15 Lethality <br> UNIQUE Passive: +20 Movement Speed out of Combat <br> UNIQUE Active - Night's Veil: Channel for 1.5 seconds to grant a spell shield that blocks the next enemy ability. Last for 5 seconds (45 second cooldown).",
     "index": 213,
     },
-// ctrl f GP GANGPLANK
+
     {
     "id": 3901,
     "name": "",
