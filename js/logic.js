@@ -2066,7 +2066,12 @@ function pullStats(imagenumber, imageindex){
     wordfrom = 1;
     for(i=0;i<arraysize;i++){
       if (wordfrom == 1){
-        comboName += itemname1[i] + " ";
+        if (((itemname1[i+1] == "of") || (itemname1[i+1] == "the")) && itemname2.length !== 1){
+          comboName += itemname1[i] + " " + itemname1[i+1] + " ";
+        }
+        else {
+          comboName += itemname1[i] + " ";
+        }
         if (itemname2[i+1] !== undefined){
           wordfrom = 2;
         }
@@ -2077,6 +2082,9 @@ function pullStats(imagenumber, imageindex){
       }
       else if (wordfrom == 2){
         comboName += itemname2[i] + " ";
+        if (itemname2[i+1] == "of" || itemname2[i+1] == "the"){
+          comboName += itemname2[i+1] + " ";
+        }
         if (itemname1[i+1] !== undefined){
           wordfrom = 1;
         }
