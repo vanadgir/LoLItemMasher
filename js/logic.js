@@ -20,8 +20,8 @@ var selectedItems = [null, null];
 var stats = ["Health", "Mana", "Attack Damage", "Ability Power",
 "% Base Health Regen","% Base Mana Regen", "% Movespeed", "% Attack Speed",
 "% Lifesteal", "% Base Attack Damage","Armor", "Magic Resistance",
-"Lethality", "% Armor Pen", "Magic Pen","% Magic Pen",
-"Gold per 10 seconds", "Cooldown Reduction", "% Crit Chance"]
+"", "", "Magic Pen","",
+"Gold per 10 seconds", "% Cooldown Reduction", "% Crit Chance"]
 
 
 function imgRedirect(destination){
@@ -2166,7 +2166,15 @@ function pullStats(imagenumber, imageindex){
     combocosttext = comboCost;
     comboStats = [];
     for(i=0;i<stats.length;i++){
-      comboStats[i] = item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i];
+      if((item[selectedItems[0]].stats[i]!==0) && ((item[selectedItems[1]].stats[i])!==0)){
+        comboStats[i] = 1.5*(item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i]);
+      }
+      else {
+        comboStats[i] = item[selectedItems[0]].stats[i]+item[selectedItems[1]].stats[i];
+      }
+      if(comboStats[17]>40){
+        comboStats[17] = 40;
+      }
     }
     combostatstext = comboStatsToString();
     combodesctext = generateComboDesc();
