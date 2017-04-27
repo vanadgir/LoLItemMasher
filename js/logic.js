@@ -2144,6 +2144,20 @@ function pullStats(imagenumber, imageindex){
     document.getElementById("statscombo").innerHTML = null
     document.getElementById("desccombo").innerHTML = ""
   }
+  //case where first is re-entered while empty
+  else if((item1select==false) && (item2select=true)){
+    item1select = true;
+    selectedItems[0] = imageindex;
+    image1nametext = item[imageindex].name
+    image1costtext = item[imageindex].cost + " g"
+    image1desctext = item[imageindex].desc
+    image1statstext = statsToString(imageindex);
+    document.getElementById("item1-image").src= image1filename;
+    document.getElementById("name1").innerHTML = image1nametext;
+    document.getElementById("cost1").innerHTML = image1costtext;
+    document.getElementById("stats1").innerHTML = image1statstext;
+    document.getElementById("desc1").innerHTML = image1desctext;
+  }
 
   //case where both slots get filled, automatically create combo
   if((item1select==true) && (item2select==true)){
