@@ -1,13 +1,13 @@
-
 body {
   position: absolute;
-  width: 90%;
-  left: 5%;
+  width: 95%;
+  left: 2.5%;
   background-image: url("sumnarift.jpg");
   background-attachment: fixed;
-  margin-bottom: 250px;
+  margin-bottom: 400px;
   font-family: 'Roboto', sans-serif;
 }
+
 button {
   height: 64px;
   width: 64px;
@@ -18,72 +18,17 @@ button {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 3rem;
   text-align: center;
   color: white;
 }
 
 #navbar {
   position: fixed;
-  height: 250px;
+  height: 325px;
   width: 100%;
   left: 0%;
-  background-color: #4E4D4A;
-  bottom: 0;
-}
-
-
-#top {
-  position: absolute;
-  text-align: center;
-  background-color: #F8A13F;
-  top: 0;
-  width: 100%;
-  line-height: 0px;
-  border: solid 2px;
-  border-color: yellow;
-}
-
-#middle {
-  position: absolute;
-  top: 22%;
-  width: 100%;
-}
-
-div.thumbnail {
-  margin: 8px;
-}
-div.item1{
-  position: relative;
-  vertical-align: top;
-  text-align: center;
-  overflow: auto;
-  background-color: white;
-  border-radius: 10px;
-  border: solid 3px;
-  border-color: black;
-}
-
-div.combo{
-  position: relative;
-  vertical-align: top;
-  text-align: center;
-  overflow: auto;
-  background-color: white;
-  border-radius: 10px;
-  border: solid 3px;
-  border-color: black;
-}
-
-div.item2{
-  position: relative;
-  vertical-align: top;
-  text-align: center;
-  overflow: auto;
-  background-color: white;
-  border-radius: 10px;
-  border: solid 3px;
-  border-color: black;
+  background-color: black;
 }
 
 #item1-image {
@@ -99,12 +44,8 @@ div.item2{
 }
 
 .info {
-  margin-left: 40px;
-  margin-top: 1%;
-  position: relative;
-  display: block;
-  font-size: 15px
-  overflow:auto;
+  font-size: 1.5rem;
+  list-style-type: none;
 }
 
 #combo-image {
@@ -150,4 +91,73 @@ div.item2{
   text-align: center;
   margin: 6px;
 
+}
+
+.thumbnail {
+  background-color: rgba(240, 240, 240, 1)
+}
+
+#first_item {
+  position: absolute;
+  top: 1%;
+  height: 320px;
+  width: 32%;
+  left: 1%;
+  overflow: scroll;
+}
+
+#combo_item {
+  position: absolute;
+  top: 1%;
+  height: 320px;
+  width: 32%;
+  left: 34%;
+  overflow: scroll;
+}
+
+#second_item {
+  position: absolute;
+  top: 1%;
+  height: 320px;
+  width: 32%;
+  left: 67%;
+  overflow: scroll;
+}
+
+#reset-button {
+  background-image: url("item/3637.png");
+}
+
+#swap-button {
+  background-image: url("item/3642.png");
+}
+
+#reset-text {
+  color: white;
+  font-size: 3rem;
+}
+
+#swap-text {
+  color: white;
+  font-size: 3rem;
+}
+
+
+/* The styling below is for screens with a max width
+of 480px (mobile phones). The browser will detect
+the screen size and override the previous styling */
+
+@media screen and (max-width: 480px) {
+  body {
+    position: absolute;
+    width: 100%;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  .info {
+    font-size: 1.5rem;
+    overflow: scroll;
+    padding: 0;
+  }
 }

@@ -1,4 +1,4 @@
-console.log("JS File loaded")
+console.log("JS File loaded");
 
 var item1select = false
 var item2select = false
@@ -1347,7 +1347,7 @@ function pullStats(imagenumber, imageindex){
 
     {
       "id": 3151,
-      "name": "Liandry's Tormet",
+      "name": "Liandry's Torment",
       "cost": 3100,
       "stats": [300,0,0,80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       "desc": "UNIQUE Passive - Eyes of Pain: +15 Magic Penetration <br> UNIQUE Passive: Spells burn enemies for 3 seconds, dealing bonus magic damage equal to 2% of their current Health per second. Burn damage is doubled against movement-impaired units.",
@@ -2103,7 +2103,7 @@ function pullStats(imagenumber, imageindex){
     image1desctext = item[imageindex].desc
     image1statstext = statsToString(imageindex);
     document.getElementById("item1-image").src= image1filename;
-    document.getElementById("name1").innerHTML = image1nametext;
+    document.getElementById("item1-name").innerHTML = image1nametext;
     document.getElementById("cost1").innerHTML = image1costtext;
     document.getElementById("stats1").innerHTML = image1statstext;
     document.getElementById("desc1").innerHTML = image1desctext;
@@ -2117,7 +2117,7 @@ function pullStats(imagenumber, imageindex){
     image2desctext = item[imageindex].desc
     image2statstext = statsToString(imageindex);
     document.getElementById("item2-image").src= image2filename;
-    document.getElementById("name2").innerHTML = image2nametext;
+    document.getElementById("item2-name").innerHTML = image2nametext;
     document.getElementById("cost2").innerHTML = image2costtext;
     document.getElementById("stats2").innerHTML = image2statstext;
     document.getElementById("desc2").innerHTML = image2desctext;
@@ -2127,12 +2127,12 @@ function pullStats(imagenumber, imageindex){
     item1select = false;
     selectedItems[0] = null;
     document.getElementById("item1-image").src= "./item/3637.png";
-    document.getElementById("name1").innerHTML = "";
+    document.getElementById("item1-name").innerHTML = "";
     document.getElementById("cost1").innerHTML = null
     document.getElementById("stats1").innerHTML = null
     document.getElementById("desc1").innerHTML = ""
     document.getElementById("combo-image").src= "./item/3637.png";
-    document.getElementById("namecombo").innerHTML = "";
+    document.getElementById("combo-name").innerHTML = "";
     document.getElementById("costcombo").innerHTML = null
     document.getElementById("statscombo").innerHTML = null
     document.getElementById("desccombo").innerHTML = ""
@@ -2142,12 +2142,12 @@ function pullStats(imagenumber, imageindex){
     item2select = false;
     selectedItems[1] = null;
     document.getElementById("item2-image").src= "./item/3637.png";
-    document.getElementById("name2").innerHTML = "";
+    document.getElementById("item2-name").innerHTML = "";
     document.getElementById("cost2").innerHTML = null
     document.getElementById("stats2").innerHTML = null
     document.getElementById("desc2").innerHTML = ""
     document.getElementById("combo-image").src= "./item/3637.png";
-    document.getElementById("namecombo").innerHTML = "";
+    document.getElementById("combo-name").innerHTML = "";
     document.getElementById("costcombo").innerHTML = null
     document.getElementById("statscombo").innerHTML = null
     document.getElementById("desccombo").innerHTML = ""
@@ -2161,7 +2161,7 @@ function pullStats(imagenumber, imageindex){
     image1desctext = item[imageindex].desc
     image1statstext = statsToString(imageindex);
     document.getElementById("item1-image").src= image1filename;
-    document.getElementById("name1").innerHTML = image1nametext;
+    document.getElementById("item1-name").innerHTML = image1nametext;
     document.getElementById("cost1").innerHTML = image1costtext;
     document.getElementById("stats1").innerHTML = image1statstext;
     document.getElementById("desc1").innerHTML = image1desctext;
@@ -2187,7 +2187,7 @@ function pullStats(imagenumber, imageindex){
     combostatstext = comboStatsToString();
     combodesctext = generateComboDesc();
     document.getElementById("combo-image").src= combofilename;
-    document.getElementById("namecombo").innerHTML = combonametext;
+    document.getElementById("combo-name").innerHTML = combonametext;
     document.getElementById("costcombo").innerHTML = combocosttext + " g";
     document.getElementById("statscombo").innerHTML = combostatstext;
     document.getElementById("desccombo").innerHTML = combodesctext;
@@ -2198,20 +2198,20 @@ function pullStats(imagenumber, imageindex){
 
 function resetStats(){
   document.getElementById("item1-image").src = "./item/3637.png";
-  document.getElementById("name1").innerHTML = "Your first item goes here.";
+  document.getElementById("item1-name").innerHTML = "First item";
   document.getElementById("cost1").innerHTML = null
   document.getElementById("stats1").innerHTML = null
   document.getElementById("desc1").innerHTML = ""
   document.getElementById("item2-image").src = "./item/3637.png";
-  document.getElementById("name2").innerHTML = "Your second item goes here.";
+  document.getElementById("item2-name").innerHTML = "Second item";
   document.getElementById("cost2").innerHTML = null
   document.getElementById("stats2").innerHTML = null
   document.getElementById("desc2").innerHTML = ""
   document.getElementById("combo-image").src = "./item/3637.png";
-  document.getElementById("namecombo").innerHTML = "Your recipe will show up here.";
+  document.getElementById("combo-name").innerHTML = "Combo item";
   document.getElementById("costcombo").innerHTML = null
   document.getElementById("statscombo").innerHTML = null
-  document.getElementById("desccombo").innerHTML = "Choose Wisely!"
+  document.getElementById("desccombo").innerHTML = null
   item1select = false;
   item2select = false;
   selectedItems[0] = null;
